@@ -22,13 +22,27 @@
 
         // How values should be represented in the output.
         // The default render option is ValueRenderOption.FORMATTED_VALUE.
-        valueRenderOption: 'FORMATTED_VALUE',  // TODO: Update placeholder value.
+        // valueRenderOption: 'FORMATTED_VALUE',  // TODO: Update placeholder value.
 
         // How dates, times, and durations should be represented in the output.
         // This is ignored if value_render_option is
         // FORMATTED_VALUE.
         // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        dateTimeRenderOption: 'FORMATTED_STRING',  // TODO: Update placeholder value.
+        // dateTimeRenderOption: 'FORMATTED_STRING',  // TODO: Update placeholder value.
+        valueInputOption: 'USER_ENTERED',
+      };
+
+      var valueRangeBody = {
+        // TODO: Add desired properties to the request body. All existing properties
+        // will be replaced.
+
+         "values": [
+          [
+           "11"
+          ]
+         ]
+        
+        
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
@@ -51,7 +65,7 @@
       //   'https://www.googleapis.com/auth/drive.readonly'
       //   'https://www.googleapis.com/auth/spreadsheets'
       //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
       gapi.client.init({
         'apiKey': API_KEY,
