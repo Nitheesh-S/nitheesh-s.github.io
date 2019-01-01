@@ -1,5 +1,7 @@
 <html>
-  <head></head>
+  <head>
+      <title>Home</title>
+  </head>
   <body>
     <!--
     BEFORE RUNNING:
@@ -14,38 +16,29 @@
     <script>
     function makeApiCall() {
       var params = {
-        // The ID of the spreadsheet to retrieve data from.
+        // The ID of the spreadsheet to update.
         spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
 
-        // The A1 notation of the values to retrieve.
-        range: 'sheet1',  // TODO: Update placeholder value.
+        // The A1 notation of the values to update.
+        range: 'Sheet1!A2',  // TODO: Update placeholder value.
 
-        // How values should be represented in the output.
-        // The default render option is ValueRenderOption.FORMATTED_VALUE.
-        // valueRenderOption: 'FORMATTED_VALUE',  // TODO: Update placeholder value.
-
-        // How dates, times, and durations should be represented in the output.
-        // This is ignored if value_render_option is
-        // FORMATTED_VALUE.
-        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
-        // dateTimeRenderOption: 'FORMATTED_STRING',  // TODO: Update placeholder value.
-        valueInputOption: 'USER_ENTERED',
+        // How the input data should be interpreted.
+        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
       };
 
       var valueRangeBody = {
         // TODO: Add desired properties to the request body. All existing properties
         // will be replaced.
-
+        {
          "values": [
           [
-           "11"
+           "9999"
           ]
          ]
-        
-        
+        }
       };
 
-      var request = gapi.client.sheets.spreadsheets.values.get(params);
+      var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result);
@@ -62,9 +55,7 @@
       // TODO: Authorize using one of the following scopes:
       //   'https://www.googleapis.com/auth/drive'
       //   'https://www.googleapis.com/auth/drive.file'
-      //   'https://www.googleapis.com/auth/drive.readonly'
       //   'https://www.googleapis.com/auth/spreadsheets'
-      //   'https://www.googleapis.com/auth/spreadsheets.readonly'
       var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
       gapi.client.init({
