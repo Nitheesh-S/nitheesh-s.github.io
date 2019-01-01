@@ -3,18 +3,9 @@
       <title>Home</title>
   </head>
   <body>
-    <!--
-    BEFORE RUNNING:
-    1. If not already done, enable the Google Sheets API
-       and check the quota for your project at
-       https://console.developers.google.com/apis/api/sheets
-    2. Get access keys for your application. See
-       https://developers.google.com/api-client-library/javascript/start/start-js#get-access-keys-for-your-application
-    3. For additional information on authentication, see
-       https://developers.google.com/sheets/api/quickstart/js#step_2_set_up_the_sample
-    -->
+    
     <script>
-    function makeApiCall() {
+    function makeApiCall(update1) {
       var params = {
         // The ID of the spreadsheet to update.
         spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
@@ -31,7 +22,7 @@
         // will be replaced.
          "values": [
           [
-           "9999"
+           update1
           ]
          ]
       };
@@ -73,7 +64,8 @@
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
-        makeApiCall();
+        document.getElementById("signin-button").style.background = "#0e0";
+        
       }
     }
 
@@ -91,5 +83,15 @@
     </script>
     <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
     <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+    <div class="main-container">
+        Expense<input type="number" name="expense" id="expense">
+        <button id="update-button" onclick="updateIt()">Update</button>
+    </div>
+    <script type="text/javascript">
+        function updateIt(){
+            var expense = document.getElementById("expense").value;
+            makeApiCall(expense);
+        }
+    </script>
   </body>
 </html>
