@@ -58,9 +58,10 @@ table {
 .main-container{
 	display: flex;
 	width: 700px;
+	min-height: 50vh;
 	justify-content: center;
 	align-items: center;
-	align-content: center;
+	align-content: space-evenly;
 	flex-wrap: wrap;
 }
 .signin-block {
