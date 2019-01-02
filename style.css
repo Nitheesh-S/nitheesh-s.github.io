@@ -47,10 +47,25 @@ table {
 	border-spacing: 0;
 }
 
+.main-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center; 
+}
+.main-container{
+	display: flex;
+	width: 400px;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	flex-wrap: wrap;
+}
 
 .signed-in,#signout-button{
   display: none;
 }
+
 .signed-in{
 	margin: 10px 5px;
 }

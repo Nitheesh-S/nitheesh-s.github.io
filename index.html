@@ -85,14 +85,16 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <div class="main-container">
-      <div class="signin-block">
-        <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-        <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
-      </div>
-      <div class="signed-in">
-        Expense<input type="number" name="expense" id="expense">
-        <button id="update-button" onclick="updateIt()">Update</button>
+    <div class="main-wrapper">
+      <div class="main-container">
+        <div class="signin-block">
+          <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
+          <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+        </div>
+        <div class="signed-in">
+          Expense<input type="number" name="expense" id="expense">
+          <button id="update-button" onclick="updateIt()">Update</button>
+        </div>
       </div>
     </div>
     <script type="text/javascript">
