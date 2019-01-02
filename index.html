@@ -36,7 +36,7 @@
         console.error('error: ' + reason.result.error.message);
       });
     }
-
+    var completeSheet1;
     function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
@@ -59,6 +59,7 @@
       var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
+        completeSheet1 = response.result;
         console.log(response.result);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
