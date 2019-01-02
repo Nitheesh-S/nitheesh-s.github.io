@@ -66,9 +66,9 @@
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
         document.getElementById("signin-button").style.background = "#0e0";
-        document.getElementsByClassName("signed-in")[0].style.display = "block";
+        document.getElementsByClassName("signed-in")[0].style.display = "flex";
         document.getElementById("signin-button").style.display = "none";
-        document.getElementById("signout-button").style.display = "block";
+        document.getElementById("signout-button").style.display = "inline-block";
       }
     }
 
@@ -78,7 +78,7 @@
 
     function handleSignOutClick(event) {
       gapi.auth2.getAuthInstance().signOut();
-      document.getElementById("signin-button").style.display = "block";
+      document.getElementById("signin-button").style.display = "inline-block";
     }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"

@@ -57,7 +57,7 @@ table {
 }
 .main-container{
 	display: flex;
-	width: 400px;
+	width: 700px;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
@@ -78,6 +78,10 @@ table {
 
 .signed-in{
 	margin: 10px 5px;
+	display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 button {
