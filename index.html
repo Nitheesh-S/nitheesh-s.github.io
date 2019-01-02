@@ -6,7 +6,7 @@
   <body>
     
     <script>
-    function makeApiCall(update1) {
+    function makeApiPostCall(update1) {
       var params = {
         // The ID of the spreadsheet to update.
         spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
@@ -29,6 +29,34 @@
       };
 
       var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
+      request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
+    }
+
+    function makeApiCall() {
+      var params = {
+        // The ID of the spreadsheet to retrieve data from.
+        spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
+
+        // The A1 notation of the values to retrieve.
+        range: 'Sheet1',  // TODO: Update placeholder value.
+
+        // How values should be represented in the output.
+        // The default render option is ValueRenderOption.FORMATTED_VALUE.
+        // valueRenderOption: '',  // TODO: Update placeholder value.
+
+        // How dates, times, and durations should be represented in the output.
+        // This is ignored if value_render_option is
+        // FORMATTED_VALUE.
+        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        // dateTimeRenderOption: '',  // TODO: Update placeholder value.
+      };
+
+      var request = gapi.client.sheets.spreadsheets.values.get(params);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result);
@@ -69,6 +97,7 @@
         document.getElementsByClassName("signin-block")[0].style.justifyContent = "flex-end";
         document.getElementById("signin-button").style.display = "none";
         document.getElementById("signout-button").style.display = "inline-block";
+        makeApiCall();
       }
     }
 
@@ -103,7 +132,7 @@
     <script type="text/javascript">
         function updateIt(){
             var expense = document.getElementById("expense").value;
-            makeApiCall(expense);
+            makeApiPostCall(expense);
         }
     </script>
   </body>
