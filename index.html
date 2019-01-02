@@ -66,7 +66,7 @@
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
         document.getElementById("signin-button").style.background = "#0e0";
-        document.getElementsByClassName("main-container")[0].style.display = "block";
+        document.getElementsByClassName("signed-in")[0].style.display = "block";
         document.getElementById("signin-button").style.display = "none";
         document.getElementById("signout-button").style.display = "block";
       }
@@ -85,11 +85,15 @@
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-    <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
     <div class="main-container">
+      <div class="signin-block">
+        <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
+        <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+      </div>
+      <div class="signed-in">
         Expense<input type="number" name="expense" id="expense">
         <button id="update-button" onclick="updateIt()">Update</button>
+      </div>
     </div>
     <script type="text/javascript">
         function updateIt(){
