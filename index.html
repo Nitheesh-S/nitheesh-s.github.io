@@ -1,6 +1,11 @@
 <html>
   <head>
       <title>Home</title>
+      <style>
+        .main-container,#signout-button{
+          display: none;
+        }
+      </style>
   </head>
   <body>
     
@@ -65,7 +70,9 @@
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
         document.getElementById("signin-button").style.background = "#0e0";
-        
+        document.getElementsByClassName("main-container")[0].style.display = "block";
+        document.getElementById("signin-button").style.display = "none";
+        document.getElementById("signout-button").style.display = "block";
       }
     }
 
@@ -75,6 +82,7 @@
 
     function handleSignOutClick(event) {
       gapi.auth2.getAuthInstance().signOut();
+      document.getElementById("signin-button").style.display = "block";
     }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
