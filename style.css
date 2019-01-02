@@ -72,16 +72,16 @@ table {
 	margin: 0 10px;
 }
 
-.signed-in,#signout-button{
-  display: none;
-}
-
 .signed-in{
 	margin: 10px 5px;
 	display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
+}
+
+.signed-in, #signout-button{
+  display: none;
 }
 
 button {
