@@ -65,8 +65,8 @@
 
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
-        document.getElementById("signin-button").style.background = "#0e0";
         document.getElementsByClassName("signed-in")[0].style.display = "flex";
+        document.getElementsByClassName("signin-block")[0].style.justifyContent = "flex-end";
         document.getElementById("signin-button").style.display = "none";
         document.getElementById("signout-button").style.display = "inline-block";
       }
