@@ -63,6 +63,9 @@ table {
 	align-items: center;
 	align-content: space-evenly;
 	flex-wrap: wrap;
+	background: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 .signin-block {
     display: flex;
