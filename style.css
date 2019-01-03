@@ -86,12 +86,16 @@ table {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    min-height: 50%;
 }
 
 .signed-in, #signout-button{
   display: none;
 }
 .signed-in .input{
+    width: 100%;
+}
+.signed-in .input input{
     width: 100%;
 }
 
