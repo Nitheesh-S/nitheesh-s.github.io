@@ -49,15 +49,17 @@ table {
 }
 
 .main-wrapper{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+    display: flex;
 	width: 100%;
 	height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background: #2D2541;
 }
 .main-container{
-	display: flex;
+	display: grid;
+    grid-template-rows: 1fr 3fr;
 	width: 700px;
 	min-height: 50vh;
 	justify-content: center;
@@ -78,15 +80,19 @@ table {
 }
 
 .signed-in{
-	margin: 10px 5px;
-	display: flex;
+    /*margin: 10px 5px;*/
+    display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .signed-in, #signout-button{
   display: none;
+}
+.signed-in .input{
+    width: 100%;
 }
 
 button {
@@ -105,4 +111,19 @@ button {
     border-radius: 4px;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #111;
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

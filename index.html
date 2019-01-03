@@ -95,7 +95,7 @@
     function updateSignInStatus(isSignedIn) {
       if (isSignedIn) {
         document.getElementsByClassName("signed-in")[0].style.display = "flex";
-        document.getElementsByClassName("signin-block")[0].style.justifyContent = "flex-end";
+        // document.getElementsByClassName("signin-block")[0].style.justifyContent = "flex-end";
         document.getElementById("signin-button").style.display = "none";
         document.getElementById("signout-button").style.display = "inline-block";
         makeApiCall();
@@ -123,8 +123,7 @@
         </div>
         <div class="signed-in">
           <div class="input">
-            <span>Expense</span>
-            <input type="number" name="expense" id="expense">
+            <input type="email" name="mail" id="mail" placeholder="Email">
           </div>
           <button id="update-button" onclick="updateIt()">Update</button>
         </div>
@@ -132,8 +131,8 @@
     </div>
     <script type="text/javascript">
         function updateIt(){
-            var expense = document.getElementById("expense").value;
-            makeApiPostCall(expense);
+            var mail = document.getElementById("mail").value;
+            makeApiPostCall(mail);
         }
     </script>
   </body>
