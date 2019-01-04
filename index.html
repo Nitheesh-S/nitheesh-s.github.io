@@ -6,13 +6,13 @@
   <body>
     
     <script>
-    function makeApiPostCall(update1) {
+    function makeApiPostCall(update1,update2) {
       var params = {
         // The ID of the spreadsheet to update.
         spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
 
         // The A1 notation of the values to update.
-        range: 'Sheet1!A3',  // TODO: Update placeholder value.
+        range: 'Sheet1!A2',  // TODO: Update placeholder value.
 
         // How the input data should be interpreted.
         valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
@@ -23,7 +23,8 @@
         // will be replaced.
          "values": [
           [
-           update1
+           update1,
+           update2
           ]
          ]
       };
@@ -124,6 +125,7 @@
         <div class="signed-in">
           <div class="input">
             <input type="email" name="mail" id="mail" placeholder="Email">
+            <input type="tel" name="mail" id="phone" placeholder="Phone Number">
           </div>
           <button id="update-button" onclick="updateIt()">Update</button>
         </div>
@@ -131,8 +133,9 @@
     </div>
     <script type="text/javascript">
         function updateIt(){
-            var mail = document.getElementById("mail").value;
-            makeApiPostCall(mail);
+            var mail = document.getElementById("mail").value || '';
+            var phone = document.getElementById("phone").value || '';
+            makeApiPostCall(mail,phone);
         }
     </script>
   </body>
