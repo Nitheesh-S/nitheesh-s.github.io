@@ -12,7 +12,7 @@
         spreadsheetId: '1vnRj1Hc6lDCt6FQDYLxIIN_9_kP10kXrUDaAntfe3pI',  // TODO: Update placeholder value.
 
         // The A1 notation of the values to update.
-        range: 'Sheet1!A2',  // TODO: Update placeholder value.
+        range: 'Sheet1',  // TODO: Update placeholder value.
 
         // How the input data should be interpreted.
         valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
@@ -29,7 +29,7 @@
          ]
       };
 
-      var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
+      var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result);
