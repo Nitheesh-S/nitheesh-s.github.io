@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "build": "webpack"
+    "start": "webpack-dev-server --config ./webpack.config.js",
+    "build": "npm run prettier && webpack",
+    "prettier": "npm run prettier:js && npm run prettier:scss && npm run prettier:html",
+    "prettier:js": "prettier --config .prettierrc --write 'src/**/*[^min].js'",
+    "prettier:scss": "prettier --config .prettierrc --write 'src/**/*.scss'",
+    "prettier:html": "prettier --config .prettierrc --write 'src/**/*.html'"
   },
   "repository": {
     "type": "git",
@@ -18,13 +22,21 @@
   },
   "homepage": "https://github.com/Nitheesh-S/nitheesh-s.github.io#readme",
   "devDependencies": {
+    "babel-loader": "^8.1.0",
     "css-loader": "^4.2.2",
+    "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
     "node-sass": "^4.14.1",
+    "prettier": "^2.1.1",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5"
   }
 }

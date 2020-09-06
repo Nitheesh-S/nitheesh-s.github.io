@@ -1,11 +1,90 @@
+@font-face {
+	font-family: 'AktivGroteskVF';
+	src: url('../public/AktivGroteskVF.woff2');
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
 body {
 	background: #222;
 	color: #ddd;
 	font-family: monospace;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 	min-height: 100vh;
 	margin: 0;
+	display: grid;
+	text-align: center;
+	align-content: flex-start;
+	grid-template-rows: auto 1fr;
+	font-family: 'AktivGroteskVF';
+}
+
+h1 {
+	font-variation-settings: 'wght' 600, 'wdth' 100, 'ital' 0;
+}
+
+.title-container {
+	display: grid;
+	align-items: center;
+	h1 {
+		margin: 0;
+	}
+}
+
+header {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	width: 100%;
+	max-width: calc(100% - 40px);
+	padding: 0 20px;
+	margin: 0 auto;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		&.right {
+			li {
+				font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+				transition: all 0.2s linear;
+				&:hover {
+					font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 1;
+				}
+			}
+		}
+	}
+	li {
+		cursor: pointer;
+		padding: 20px;
+		margin: 0;
+		line-height: 1;
+	}
+	.logo {
+		font-size: 20px;
+		font-variation-settings: 'wght' 500, 'wdth' 100, 'ital' 0;
+	}
+	a {
+		text-decoration: none;
+		color: #ddd;
+		position: relative;
+		&:before {
+			content: '';
+			width: 0;
+			height: 2px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background: #ddd;
+			transition: all 0.2s ease-in;
+		}
+		&:hover {
+			&:before {
+				width: 100%;
+			}
+		}
+	}
 }

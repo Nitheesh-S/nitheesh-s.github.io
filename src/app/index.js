@@ -1,2 +1,4 @@
 import '../style/app.scss';
-console.log("hello");
+import PdfFile from '../public/NitheeshResume.pdf';
+
+let mainTitle = document.querySelector('h1');

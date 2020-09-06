@@ -2,29 +2,56 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+	target: "web",
+	// watch: true,
 	entry: __dirname + '/src/app/index.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'docs'),
 		publicPath: ''
 	},
-	module: { 
+	module: {
 		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader'
+			},
 			{
 				test: /\.s[ac]ss$/i,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
+			{
+				test: /\.(woff(2)?|ttf|eot|svg|pdf|jpg|png|jpeg)(\?v=\d+\.\d+\.\d+)?$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]'
+						}
+					}
+				]
+			}
 		],
 	},
-	plugins: [ 
+	devServer: {
+		historyApiFallback: true,
+		compress: true,
+        port:9000,
+        open: true,
+		publicPath: '',
+		stats: 'minimal',
+		inline: true,
+	},
+	// mode: 'development',
+	mode: 'production',
+	plugins: [
 		new HtmlWebpackPlugin({
 			template: __dirname + "/src/public/index.html",
 			inject: 'body'
 		})
 	],
-	devServer: { 
-		contentBase: __dirname + '/src/public', 
-		port: 8000,
-	},
-	mode: 'development',
+	watchOptions: {
+		poll: true
+	}
 };
