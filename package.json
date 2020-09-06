@@ -4,16 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "npm run watch:scss",
-    "minify:css": "ls css/*.min.css -1 | xargs -I{} cleancss -o {} {}",
-    "rename:css": "ls css/*[^min].css -1 | sed -e 's/\\.css$//' | xargs -I{} mv {}.css {}.min.css",
-    "prettier": "npm run prettier:js && npm run prettier:scss",
-		"prettier:js": "prettier --config .prettierrc --write 'js/**/*[^min].js'",
-		"prettier:scss": "prettier --config .prettierrc --write './**/*.scss'",
-    "scss": "node-sass --output-style compressed -o css/ scss/ && npm run rename:css",
-    "watch:scss": "onchange \"scss/**/*.scss\" -- npm run scss",
-    "build": "npm run prettier && npm run scss && npm run minify:css"
+    "start": "webpack-dev-server --progress",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -26,9 +18,13 @@
   },
   "homepage": "https://github.com/Nitheesh-S/nitheesh-s.github.io#readme",
   "devDependencies": {
-    "clean-css-cli": "^4.3.0",
+    "css-loader": "^4.2.2",
+    "html-webpack-plugin": "^4.4.1",
     "node-sass": "^4.14.1",
-    "onchange": "^7.0.2",
-    "prettier": "^2.1.1"
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
