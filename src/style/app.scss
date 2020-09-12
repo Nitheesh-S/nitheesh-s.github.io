@@ -1,6 +1,16 @@
+// @font-face {
+// 	font-family: 'AktivGroteskVF';
+// 	src: url('../public/fonts/AktivGroteskVF.woff2');
+// }
+
 @font-face {
-	font-family: 'AktivGroteskVF';
-	src: url('../public/AktivGroteskVF.woff2');
+	font-family: 'JosefinSansVF';
+	src: url('../public/fonts/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+	font-family: 'FiraCodeVF';
+	src: url('../public/fonts/FiraCode-VariableFont_wght.ttf');
 }
 
 *,
@@ -9,28 +19,38 @@
 	box-sizing: border-box;
 }
 
+html {
+	--bg-1: #000;
+	--text-fg-1: #fff;
+}
+
 body {
-	background: #222;
-	color: #ddd;
+	background: var(--bg-1);
+	color: var(--text-fg-1);
 	font-family: monospace;
 	min-height: 100vh;
 	margin: 0;
 	display: grid;
-	text-align: center;
 	align-content: flex-start;
 	grid-template-rows: auto 1fr;
-	font-family: 'AktivGroteskVF';
+	font-family: 'JosefinSansVF';
 }
 
 h1 {
-	font-variation-settings: 'wght' 600, 'wdth' 100, 'ital' 0;
+	font-family: 'FiraCodeVF';
+	font-variation-settings: 'wght' 400;
 }
 
 .title-container {
 	display: grid;
+	justify-content: center;
 	align-items: center;
+	padding: 0 20px;
 	h1 {
 		margin: 0;
+		font-size: 1.5rem;
+		text-align: left;
+		max-width: 600px;
 	}
 }
 
@@ -39,9 +59,10 @@ header {
 	grid-auto-flow: column;
 	justify-content: space-between;
 	width: 100%;
-	max-width: calc(100% - 40px);
-	padding: 0 20px;
 	margin: 0 auto;
+	@media (min-width: 600px) {
+		max-width: calc(100% - 60px);
+	}
 
 	ul {
 		list-style: none;
@@ -49,10 +70,10 @@ header {
 		padding: 0;
 		&.right {
 			li {
-				font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 0;
+				font-variation-settings: 'wght' 300;
 				transition: all 0.2s linear;
 				&:hover {
-					font-variation-settings: 'wght' 300, 'wdth' 100, 'ital' 1;
+					font-variation-settings: 'wght' 300;
 				}
 			}
 		}
@@ -65,11 +86,11 @@ header {
 	}
 	.logo {
 		font-size: 20px;
-		font-variation-settings: 'wght' 500, 'wdth' 100, 'ital' 0;
+		font-variation-settings: 'wght' 500;
 	}
 	a {
 		text-decoration: none;
-		color: #ddd;
+		color: var(--text-c-1);
 		position: relative;
 		&:before {
 			content: '';
@@ -78,7 +99,7 @@ header {
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			background: #ddd;
+			background: var(--text-c-1);
 			transition: all 0.2s ease-in;
 		}
 		&:hover {

@@ -43,8 +43,7 @@ module.exports = {
 		stats: 'minimal',
 		inline: true,
 	},
-	// mode: 'development',
-	mode: 'production',
+	mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: __dirname + "/src/public/index.html",

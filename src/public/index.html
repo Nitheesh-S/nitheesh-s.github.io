@@ -2,10 +2,50 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0"
+		/>
 		<title>Portfolio | Nitheesh</title>
+		<style>
+			body.loading {
+				margin: 0;
+				position: relative;
+				min-height: 100vh;
+				background: #000;
+			}
+			.loader {
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				background: #000;
+				display: grid;
+				top: 0;
+				left: 0;
+				z-index: 1001;
+				color: #fff;
+				font-family: sans-serif;
+				justify-content: center;
+				align-items: center;
+				pointer-events: auto;
+				opacity: 0;
+				transition: opacity 0.5s linear;
+			}
+			body.loading .loader {
+				opacity: 1;
+			}
+			body.loading .main-contianer {
+				opacity: 0;
+			}
+		</style>
+		<script>
+			window.addEventListener('load', () => {
+				document.body.classList.remove('loading');
+			});
+		</script>
 	</head>
-	<body style="background: #222">
+	<body class="loading">
+		<div class="loader"></div>
 		<header>
 			<ul class="left">
 				<li class="logo">NITHEESH</li>
@@ -17,7 +57,11 @@
 			</ul>
 		</header>
 		<div class="title-container">
-			<h1>Hi, I am Nitheesh. I'm a web developer based in Chennai. <br />Currently, working at ParentCircle.</h1>
+			<h1>
+				Hi, I am Nitheesh. <br />
+				I'm a web developer based in Chennai. <br />
+				Currently, working at ParentCircle.
+			</h1>
 		</div>
 	</body>
 </html>
