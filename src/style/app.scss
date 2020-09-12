@@ -37,13 +37,13 @@ body {
 }
 
 h1 {
-	font-family: 'FiraCodeVF';
+	font-family: 'FiraCodeVF', monospace;
 	font-variation-settings: 'wght' 400;
 }
 
 .title-container {
 	display: grid;
-	justify-content: center;
+	// justify-content: center;
 	align-items: center;
 	padding: 0 20px;
 	h1 {
@@ -51,6 +51,7 @@ h1 {
 		font-size: 1.5rem;
 		text-align: left;
 		max-width: 600px;
+		// line-height: 1;
 	}
 }
 
@@ -106,6 +107,35 @@ header {
 			&:before {
 				width: 100%;
 			}
+		}
+	}
+}
+
+.typer {
+	--vintage-green: #3f3;
+	--typer-c: var(--vintage-green);
+	span.block {
+		display: inline-flex;
+		position: relative;
+		background: var(--typer-c);
+		color: var(--typer-c);
+		line-height: 1;
+	}
+	&.blink span.block {
+		animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+		0% {
+			--typer-c: var(--vintage-green);
+		}
+
+		50% {
+			--typer-c: transparent;
+		}
+
+		100% {
+			--typer-c: var(--vintage-green);
 		}
 	}
 }

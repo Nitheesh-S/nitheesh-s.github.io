@@ -17,15 +17,16 @@
 				font-family: sans-serif;
 				justify-content: center;
 				align-items: center;
-				pointer-events: auto;
+				pointer-events: none;
 				opacity: 0;
 				transition: opacity 0.5s linear;
 			}
 			body.loading .loader {
 				opacity: 1;
+				pointer-events: auto;
 			}
 			body.loading .main-contianer {
 				opacity: 0;
 			}</style><script>window.addEventListener('load', () => {
 				document.body.classList.remove('loading');
-			});</script></head><body class="loading"><div class="loader"></div><header><ul class="left"><li class="logo">NITHEESH</li></ul><ul class="right"><li><a href="NitheeshResume.pdf" target="_blank">Resume</a></li></ul></header><div class="title-container"><h1>Hi, I am Nitheesh.<br/>I'm a web developer based in Chennai.<br/>Currently, working at ParentCircle.</h1></div><script src="bundle.js"></script></body></html>
+			});</script><link rel="preload" href="FiraCode-VariableFont_wght.ttf" as="font" crossorigin="anonymous"/></head><body class="loading"><div class="loader"></div><header><ul class="left"><li class="logo">NITHEESH</li></ul><ul class="right"><li><a href="NitheeshResume.pdf" target="_blank">Resume</a></li></ul></header><div class="title-container"><h1></h1></div><script src="bundle.js"></script></body></html>
