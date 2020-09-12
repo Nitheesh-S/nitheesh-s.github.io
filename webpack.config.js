@@ -37,11 +37,15 @@ module.exports = {
 	devServer: {
 		historyApiFallback: true,
 		compress: true,
-        port:9000,
+        port: 8080,
         open: true,
+		openPath: 'localhost:8080',
 		publicPath: '',
 		stats: 'minimal',
 		inline: true,
+		disableHostCheck: true,
+		public: 'localhost:8080',
+		host: '0.0.0.0'
 	},
 	mode: process.env.NODE_ENV == 'production' ? 'production' : 'development',
 	plugins: [
