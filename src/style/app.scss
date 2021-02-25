@@ -35,9 +35,9 @@ body {
 	margin: 0;
 	display: grid;
 	align-content: flex-start;
-	grid-template-rows: auto 1fr;
 	font-family: 'JosefinSansVF';
 	min-height: 85vh;
+	overflow: hidden;
 	@media (min-width: 600px) {
 		min-height: 100vh;
 	}
@@ -52,6 +52,7 @@ h1 {
 	display: grid;
 	align-items: center;
 	padding: 0 20px;
+	min-height: 100vh;
 	@media (min-width: 600px) {
 		justify-self: center;
 		min-width: 600px;
@@ -73,8 +74,12 @@ header {
 	justify-content: space-between;
 	width: 100%;
 	margin: 0 auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	
 	@media (min-width: 600px) {
-		max-width: calc(100% - 60px);
+		padding: 0 30px;
 	}
 
 	ul {

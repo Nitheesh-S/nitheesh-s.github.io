@@ -11,18 +11,19 @@
 			body.loading {
 				margin: 0;
 				position: relative;
-				min-height: 85vh;
+				min-height: 100vh;
 				background: #000;
+				overflow: hidden;
 			}
 			.loader {
-				position: absolute;
+				position: fixed;
 				width: 100%;
 				height: 100%;
-				background: #000;
-				display: grid;
 				top: 0;
 				left: 0;
+				background: #000;
 				z-index: 1001;
+				display: grid;
 				color: #fff;
 				font-family: sans-serif;
 				justify-content: center;
@@ -59,12 +60,6 @@
 			</ul>
 		</header>
 		<div class="title-container">
-			<!-- <h1>
-				Hi, I am Nitheesh. <br />
-				I'm a web developer based in Chennai. <br />
-				Currently, working at ParentCircle.
-			</h1> -->
-			<!-- █ -->
 			<h1></h1>
 		</div>
 	</body>

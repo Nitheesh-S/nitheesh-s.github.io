@@ -27,7 +27,7 @@ class Typer {
 
 		this.updatedContent += this.content[0][0] ? this.content[0][0] : this.content[1] ? '</br>' : '';
 
-		this.el.innerHTML = this.initialHTML + this.updatedContent + `<span class="block">H</span>`;
+		this.el.innerHTML = this.initialHTML + this.updatedContent + `<span class="block">&#8192;</span>`;
 
 		if (this.content[0][0]) this.content[0] = this.content[0].slice(1);
 		else this.content = this.content.slice(1);
@@ -44,8 +44,8 @@ window.addEventListener('load', () => {
 	setTimeout(() => {
 		let mainTitleTyper = new Typer(mainTitle, [
 			`Hi, I am Nitheesh.`,
-			`I'm a web developer based in Chennai.`,
-			`Currently, working at ParentCircle.`,
+			`I'm a Software Engineer based in Chennai.`,
+			`Currently, working at Iderize.`,
 		]);
 	}, 1000);
 });

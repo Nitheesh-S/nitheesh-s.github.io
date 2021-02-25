@@ -39,7 +39,6 @@ module.exports = {
 		compress: true,
         port: 8080,
         open: true,
-		openPath: 'localhost:8080',
 		publicPath: '',
 		stats: 'minimal',
 		inline: true,
