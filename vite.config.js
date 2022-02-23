@@ -8,6 +8,7 @@ module.exports = defineConfig({
         main: resolve(__dirname, 'index.html'),
         wordle: resolve(__dirname, 'wordle/index.html')
       }
-    }
+    },
+	outDir: 'docs/'
   }
 })
