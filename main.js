@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
 		let mainTitleTyper = new Typer(mainTitle, [
 			`Hi, I am Nitheesh.`,
 			`I'm a Software Engineer based in Chennai.`,
-			`Currently, working at Iderize.`,
+			`Currently, working at Techjays.`,
 		]);
 	}, 1000);
 });
