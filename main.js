@@ -1,5 +1,4 @@
-import '../style/app.scss';
-import PdfFile from '../public/NitheeshResume.pdf';
+import '/style/app.css'
 
 let mainTitle = document.querySelector('h1');
 
