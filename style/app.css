@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'JosefinSansVF';
-	src: url('fonts/JosefinSans-VariableFont_wght.ttf');
+	src: url('/fonts/JosefinSans-VariableFont_wght.ttf');
 }
 @font-face {
 	font-family: 'FiraCodeVF';
-	src: url('fonts/FiraCode-VariableFont_wght.ttf');
+	src: url('/fonts/FiraCode-VariableFont_wght.ttf');
 }
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -23,7 +23,7 @@ body {
 	margin: 0;
 	display: grid;
 	align-content: flex-start;
-	font-family: 'JosefinSansVF';
+	font-family: 'JosefinSansVF', sans-serif;
 	min-height: 85vh;
 	overflow: hidden;
 }
