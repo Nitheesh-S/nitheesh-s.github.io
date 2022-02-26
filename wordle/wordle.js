@@ -64,8 +64,11 @@ const showPositionStats = position => {
 
 }
 
-document.querySelectorAll('.probability-input li').forEach(inputEl => {
+let probabilityInputEls = document.querySelectorAll('.probability-input li');
+probabilityInputEls.forEach(inputEl => {
 	inputEl.addEventListener('click', function() {
+		probabilityInputEls.forEach(el => el.classList.remove('active'))
+		this.classList.add('active')
 		if(this.dataset.name == "overall")
 			showOverallStats()
 		else
