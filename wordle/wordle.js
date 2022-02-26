@@ -35,7 +35,15 @@ let probabilityOutputEl = document.querySelector('.probability-output')
 
 const showStats = stats => {
 	let listStr = stats.map(data => {
-		return `<li>${data.char.toUpperCase()} : ${data.value}</li>`
+		return `<li>
+			<span class="char">${data.char.toUpperCase()}</span>
+			<div class="probability" data-value="${data.value}" data-percent="${data.percent}">
+				<span>${data.percent}</span>
+				<div class="visual">
+					<span style="width:${data.percent}%"></span>
+				</div>
+			</div>
+		</li>`
 	}).join('')
 	
 	probabilityOutputEl.innerHTML = listStr
@@ -43,25 +51,37 @@ const showStats = stats => {
 
 const showOverallStats = () => {
 	console.log('showOverallStats :>> ', showOverallStats);
+	let totalValue = 0;
 	let stats = Object.values(charStats).sort((a,b) => b.count - a.count).map(x => {
+		totalValue += x.count
 		return {
 			char: x.char,
 			value: x.count
 		}
 	})
+	stats.map(x => {
+		x.percent = Math.round(((x.value / totalValue) * 100) * 100) / 100
+		return x
+	})
 	showStats(stats)
 }
 
 const showPositionStats = position => {
+	let totalValue = 0;
 	let i = position - 1;
 	let stats = Object.values(charStats).sort((a,b) => b.countByPosition[i] - a.countByPosition[i]).map(x => {
+		totalValue += x.count
 		return {
 			char: x.char,
 			value: x.countByPosition[i]
 		}
 	})
-	showStats(stats)
+	stats.map(x => {
+		x.percent = Math.round(((x.value / totalValue) * 100) * 100) / 100
+		return x
+	})
 
+	showStats(stats)
 }
 
 let probabilityInputEls = document.querySelectorAll('.probability-input li');

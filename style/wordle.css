@@ -36,14 +36,16 @@ body {
 		min-height: 100vh;
    }
 }
-h1 {
+h2 {
 	font-family: 'FiraCodeVF', monospace;
 	font-variation-settings: 'wght' 400;
+	text-align: center;
 }
 
 .main-container {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	justify-items: center;
 }
 .wordle-container {
 	display: grid;
@@ -65,35 +67,87 @@ h1 {
 .wordle-container li {
 	display: block;
 	padding: 10px;
-	border: 1px solid #eee;
+	border: 1px solid #444;
 }
 
+.probability-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 30px;
+}
 .probability-input {
 	display: grid;
 	grid-gap: 5px;
-	width: 421px;
-	height: 66px;
-	grid-template-columns: repeat(6, 1fr);
+	align-content: start;
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
 .probability-input li {
-	background: #ddd;
-	display: grid;
-	place-items: center;
+	background: #333;
 	cursor: pointer;
-	transition: all 0.2s linear;
+	transition: all 0.1s linear;
+	line-height: 1;
+	font-family: 'Courier New', Courier, monospace;
+	padding: 10px;
 }
 .probability-input li.active {
-	background-color: #3f3;
+	background-color: #538d4e;
+	&:hover {
+		background-color: #538d4e;
+	}
 }
 .probability-input li:hover {
-	background: #ccc;
+	background: #b59f3b;
 }
-
 .probability-output {
 	list-style: none;
 	display: grid;
 	grid-gap: 10px;
+	padding: 0;
+	margin: 0;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(13, 1fr);
+	grid-auto-flow: column;
+	font-size: 14px;
+	font-family: 'Courier New', Courier, monospace;
+	li {
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
+		line-height: 1;
+		justify-content: start;
+		grid-gap: 8px;
+		grid-template-columns: 28px 1fr;
+	}
+	.char {
+		display: grid;	
+		border: 1px solid #444;
+		width: 28px;
+		height: 28px;
+		place-items: center;
+	}
+
+	.probability {
+		display: grid;
+		grid-auto-flow: column;
+		grid-gap: 4px;
+
+		> span {
+			display: block;
+			width: 45px;
+		}
+
+		.visual {
+			position: relative;
+			border: 1px solid #444;
+			height: 100%;
+			width: 200px;
+			span {
+				display: block;
+				background-color: #538d4e;
+				height: 100%;
+			}
+		}
+	}
 }
