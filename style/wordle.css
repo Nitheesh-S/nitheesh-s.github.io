@@ -1,0 +1,99 @@
+@font-face {
+	font-family: 'JosefinSansVF';
+	src: url('/fonts/JosefinSans-VariableFont_wght.ttf');
+}
+@font-face {
+	font-family: 'FiraCodeVF';
+	src: url('/fonts/FiraCode-VariableFont_wght.ttf');
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+:root {
+	--vintage-green: #3f3;
+	--darkendGreen: #538d4e;
+	--darkendYellow: #b59f3b;
+	--color-present: var(--darkendYellow);
+    --color-correct: var(--darkendGreen);
+}
+html {
+	--bg-1: #000;
+	--text-fg-1: #fff;
+}
+body {
+	background: var(--bg-1);
+	color: var(--text-fg-1);
+	font-family: monospace;
+	margin: 0;
+	display: grid;
+	align-content: flex-start;
+	font-family: 'JosefinSansVF', sans-serif;
+	min-height: 85vh;
+	/* overflow: hidden; */
+}
+@media (min-width: 600px) {
+	body {
+		min-height: 100vh;
+   }
+}
+h1 {
+	font-family: 'FiraCodeVF', monospace;
+	font-variation-settings: 'wght' 400;
+}
+
+.main-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+.wordle-container {
+	display: grid;
+	grid-gap: 5px;
+	width: 350px;
+	height: 420px;
+	grid-template-rows: repeat(6, 1fr);
+}
+.wordle-container ul {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 5px;
+	padding: 0;
+	margin: 0;
+}
+.wordle-container ul:hover {
+	background: #111;
+}
+.wordle-container li {
+	display: block;
+	padding: 10px;
+	border: 1px solid #eee;
+}
+
+.probability-input {
+	display: grid;
+	grid-gap: 5px;
+	width: 421px;
+	height: 66px;
+	grid-template-columns: repeat(6, 1fr);
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.probability-input li {
+	background: #ddd;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+.probability-input li.active {
+	background-color: #3f3;
+}
+.probability-input li:hover {
+	background: #ccc;
+}
+
+.probability-output {
+	list-style: none;
+	display: grid;
+	grid-gap: 10px;
+}

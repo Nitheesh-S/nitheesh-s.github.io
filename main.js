@@ -1,4 +1,4 @@
-import '/style/app.css'
+import '/style/index.css'
 
 let mainTitle = document.querySelector('h1');
 
