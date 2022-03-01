@@ -59,6 +59,7 @@ const getYellowPositionRegExp = tries => {
 const getYellowCharSet = tries => {
 	let yellowCharSet = tries.flat().reduce((prev, curr) => {
 		if(curr.color != 'YELLOW') return prev
+		
 		prev.add(curr.char)
 		return prev
 	}, new Set())
@@ -66,12 +67,17 @@ const getYellowCharSet = tries => {
 }
 
 const getGreyRegExp = tries => {
-	let greyCharSet = tries.flat().reduce((prev, curr) => {
-		if(curr.color == 'GREY')
-			prev.add(curr.char)
-		return prev
-	}, new Set())
-	return new RegExp(`[${[...greyCharSet].join('')}]`)
+	let greyCharSet = new Set()
+	let greenCharSet = new Set()
+
+	tries.flat().forEach(charDetail => {
+		if(charDetail.color == 'GREY')
+			greyCharSet.add(charDetail.char)
+		if(charDetail.color == 'GREEN')
+			greenCharSet.add(charDetail.char)
+	})
+	let greyChars = [...greyCharSet].filter(c => !greenCharSet.has(c))
+	return new RegExp(`[${greyChars.join('')}]`)
 }
 
 const filterWords = (tries) => {
@@ -167,9 +173,10 @@ const getValidTries = tries => {
 const getCharStatsFromTries = validTries => {
 	const filteredWordList = filterWords(validTries)
 	
-	console.groupCollapsed();
-	console.log('%c' + filteredWordList.join('  '), 'text-transform: uppercase; line-height: 1.5;')
-	console.groupEnd();
+	// console.groupCollapsed();
+	// console.log('%c' + filteredWordList.join('  '), 'text-transform: uppercase; line-height: 1.5;')
+	console.log('filteredWordList :>> ', filteredWordList);
+	// console.groupEnd();
 	return getCharStats(filteredWordList)
 }
 
