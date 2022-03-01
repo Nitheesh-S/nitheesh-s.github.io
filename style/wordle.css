@@ -46,6 +46,7 @@ h2 {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-items: center;
+	grid-gap: 20px;
 }
 .wordle-container {
 	display: grid;
