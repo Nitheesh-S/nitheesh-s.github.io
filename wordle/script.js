@@ -56,18 +56,13 @@ const getYellowPositionRegExp = tries => {
 	return new RegExp(`^${yellowPattern}$`)
 }
 
-const getYellowExistsRegExp = tries => {
-	let yellowExists = false
+const getYellowCharSet = tries => {
 	let yellowCharSet = tries.flat().reduce((prev, curr) => {
 		if(curr.color != 'YELLOW') return prev
-		yellowExists = true
 		prev.add(curr.char)
 		return prev
 	}, new Set())
-	return {
-		regExp: new RegExp(`[${[...yellowCharSet].join('')}]`),
-		exists: yellowExists
-	}
+	return yellowCharSet
 }
 
 const getGreyRegExp = tries => {
@@ -82,18 +77,14 @@ const getGreyRegExp = tries => {
 const filterWords = (tries) => {
 	const greenRegExp = getGreenRegExp(tries)
 	const greyRegExp = getGreyRegExp(tries)
-	const {
-		regExp: yellowExistsRegExp,
-		exists: yellowExists
-	} = getYellowExistsRegExp(tries)
+	const yellowCharSet = getYellowCharSet(tries)
 	const yellowPositionRegExp = getYellowPositionRegExp(tries)
 
 	return dictionary.filter(word => {
 		if(greyRegExp.test(word)) return false
 		if(!greenRegExp.test(word)) return false
 		if(!yellowPositionRegExp.test(word)) return false
-		if(yellowExists)
-			if(!yellowExistsRegExp.test(word)) return false
+		if(![...yellowCharSet].every(c => word.includes(c))) return false
 			
 		return true
 	})
