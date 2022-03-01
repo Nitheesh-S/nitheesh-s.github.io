@@ -44,7 +44,7 @@ h2 {
 
 .main-container {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2, auto);
 	justify-items: center;
 	grid-gap: 20px;
 }
@@ -85,11 +85,12 @@ h2 {
 
 .probability-container {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: auto;
 	grid-gap: 30px;
 }
 .probability-input {
 	display: grid;
+	grid-template-columns: repeat(5, 1fr);
 	grid-gap: 5px;
 	align-content: start;
 	padding: 0;
@@ -103,6 +104,7 @@ h2 {
 		font-family: 'FiraCodeVF', monospace;
 		padding: 10px;
 		white-space: nowrap;
+		text-align: center;
 		&.active {
 			background-color: #538d4e;
 			&:hover {
@@ -111,6 +113,9 @@ h2 {
 		}
 		&:hover {
 			background: #b59f3b;
+		}
+		&:nth-of-type(1) {
+			grid-column: span 5;
 		}
 	}
 }
