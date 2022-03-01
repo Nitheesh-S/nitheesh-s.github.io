@@ -80,7 +80,6 @@ const getGreyRegExp = tries => {
 }
 
 const filterWords = (tries) => {
-	console.log('tries :>> ', tries);
 	const greenRegExp = getGreenRegExp(tries)
 	const greyRegExp = getGreyRegExp(tries)
 	const {
@@ -101,7 +100,6 @@ const filterWords = (tries) => {
 }
 
 const getTries = (tries, key) => {
-	console.log('key :>> ', key);
 	if(key == 'backspace') {
 		if(!tries.length) return
 
@@ -114,17 +112,23 @@ const getTries = (tries, key) => {
 		return tries
 	}
 
-	let char = {
-		char: key,
-		color: 'GREY'
-	}
-
 	// tried all attempts in wordle
 	if(tries.length >= 6 && tries[5].length == 5)
 		return tries
 
 	if(!tries.length || tries[tries.length - 1].length == 5)
 		tries.push([])
+	
+	let char = {
+		char: key,
+		color: 'GREY'
+	}
+
+	let currentIndex = tries[tries.length - 1].length
+	for(let attempt of tries) {
+		if(attempt[currentIndex]?.char == key)
+			char['color'] = attempt[currentIndex].color
+	}
 
 	tries[tries.length - 1].push(char)
 	return tries
@@ -171,7 +175,10 @@ const getValidTries = tries => {
 
 const getCharStatsFromTries = validTries => {
 	const filteredWordList = filterWords(validTries)
-	console.log('filteredWordList :>> ', filteredWordList);
+	
+	console.groupCollapsed();
+	console.log('%c' + filteredWordList.join('  '), 'text-transform: uppercase; line-height: 1.5;')
+	console.groupEnd();
 	return getCharStats(filteredWordList)
 }
 
@@ -199,12 +206,17 @@ wordleContainerEl.querySelectorAll('li').forEach(el => {
 		let rowIndex = parseInt(this.parentElement.dataset.rowId) - 1
 		let charIndex = parseInt(this.dataset.charIndex)
 		
-
 		let currentColor = tries[rowIndex][charIndex].color
 		let nextColor = colorsOrder.next(currentColor)
 
-		tries[rowIndex][charIndex].color = nextColor
+		tries.forEach(attempt => {
+			if(attempt[charIndex]?.char == tries[rowIndex][charIndex].char)
+				attempt[charIndex].color = nextColor
+		})
+
 		this.dataset.color = nextColor
+		
+		updateWordleUI(tries)
 		handleTriesUpdate(tries)
 	}, false)
 })
