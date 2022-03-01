@@ -94,23 +94,24 @@ h2 {
 	padding: 0;
 	margin: 0;
 	list-style: none;
-}
-.probability-input li {
-	background: #333;
-	cursor: pointer;
-	transition: all 0.1s linear;
-	line-height: 1;
-	font-family: 'FiraCodeVF', monospace;
-	padding: 10px;
-}
-.probability-input li.active {
-	background-color: #538d4e;
-	&:hover {
-		background-color: #538d4e;
+	li {
+		background: #333;
+		cursor: pointer;
+		transition: all 0.1s linear;
+		line-height: 1;
+		font-family: 'FiraCodeVF', monospace;
+		padding: 10px;
+		white-space: nowrap;
+		&.active {
+			background-color: #538d4e;
+			&:hover {
+				background-color: #538d4e;
+			}
+		}
+		&:hover {
+			background: #b59f3b;
+		}
 	}
-}
-.probability-input li:hover {
-	background: #b59f3b;
 }
 .probability-output {
 	list-style: none;
