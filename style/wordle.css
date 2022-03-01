@@ -1,3 +1,8 @@
+@custom-media --only-ph (max-width: 600px);
+@custom-media --gt-ph (min-width: 600px);
+@custom-media --gt-tab (min-width: 821px);
+@custom-media --gt-max-w (min-width: 1366px);
+  
 @font-face {
 	font-family: 'JosefinSansVF';
 	src: url('/fonts/JosefinSans-VariableFont_wght.ttf');
@@ -30,11 +35,9 @@ body {
 	font-family: 'JosefinSansVF', sans-serif;
 	min-height: 85vh;
 	/* overflow: hidden; */
-}
-@media (min-width: 600px) {
-	body {
+	@media (--gt-ph) {
 		min-height: 100vh;
-   }
+	}
 }
 h2 {
 	font-family: 'FiraCodeVF', monospace;
@@ -44,11 +47,20 @@ h2 {
 
 .main-container {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
 	justify-items: center;
 	grid-gap: 20px;
+	@media (--gt-ph) {
+		grid-template-columns: repeat(2, auto);	
+	}
 }
+
 .wordle-container {
+	display: grid;
+	grid-gap: 10px;
+	justify-items: center;
+}
+
+.wordle {
 	display: grid;
 	grid-gap: 5px;
 	width: 350px;
@@ -83,10 +95,49 @@ h2 {
 	}
 }
 
-.probability-container {
+.wordle-keyboard {
 	display: grid;
-	grid-template-columns: auto;
+	text-transform: uppercase;
+	font-family: 'FiraCodeVF', monospace;
+	ul {
+		display: grid;
+		
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		grid-auto-flow: column;
+		justify-content: center;
+		font-size: 14px;
+		@media (--gt-ph) {
+			font-size: 16px;
+		}
+	}
+	li {
+		border: 1px solid #444;
+		display: grid;
+		place-items: center;
+		width: 32px;
+		height: 46px;
+		cursor: pointer;
+		user-select: none;
+		@media (--gt-ph) {
+			width: 42px;
+			height: 42px;
+		}
+		&:hover, &:focus {
+			background: #111;
+		}
+	}
+}
+
+.probability-container {
+	display: none;
 	grid-gap: 30px;
+	width: 100%;
+    justify-content: center;
+	@media (--gt-ph) {
+		display: grid;
+	}
 }
 .probability-input {
 	display: grid;
@@ -105,6 +156,7 @@ h2 {
 		padding: 10px;
 		white-space: nowrap;
 		text-align: center;
+		text-transform: uppercase;
 		&.active {
 			background-color: #538d4e;
 			&:hover {
@@ -125,11 +177,13 @@ h2 {
 	grid-gap: 10px;
 	padding: 0;
 	margin: 0;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: repeat(13, 1fr);
-	grid-auto-flow: column;
 	font-size: 14px;
 	font-family: 'FiraCodeVF', monospace;
+	@media (--gt-ph) {
+		grid-auto-flow: column;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(13, 1fr);
+	}
 	li {
 		display: grid;
 		grid-auto-flow: column;

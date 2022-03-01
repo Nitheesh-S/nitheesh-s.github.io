@@ -10,6 +10,8 @@ colorsOrder.next = function(value) {
 }
 
 const wordleContainerEl = document.querySelector('.wordle-container')
+const wordleEl = wordleContainerEl.querySelector('.wordle')
+const wordleKeyboardEl = wordleContainerEl.querySelector('.wordle-keyboard')
 const probabilityOutputEl = document.querySelector('.probability-output')
 const probabilityInputEl = document.querySelector('.probability-input');
 const probabilityInputEls = probabilityInputEl.querySelectorAll('li');
@@ -17,10 +19,13 @@ let tries = []
 
 const getProbabilityPosition = el => parseInt(el.dataset.probabiltyId) - 1
 
-const updateProbabilityUI = (el, stats=null) => {
-	el.classList.add('active')
-		
-	let position = getProbabilityPosition(el)
+const updateProbabilityUI = () => {
+	let validTries = getValidTries(tries)
+
+	const stats = getCharStatsFromTries(validTries)
+
+	let activeProbabilityInput = probabilityInputEl.querySelector('li.active')
+	let position = getProbabilityPosition(activeProbabilityInput)
 	let statsUIData = getProbabilityStats(position, stats)
 	probabilityOutputEl.innerHTML = getStatsUI(statsUIData)
 }
@@ -81,6 +86,7 @@ const getGreyRegExp = tries => {
 }
 
 const filterWords = (tries) => {
+	if(!tries.length) return dictionary
 	const greenRegExp = getGreenRegExp(tries)
 	const greyRegExp = getGreyRegExp(tries)
 	const yellowCharSet = getYellowCharSet(tries)
@@ -139,7 +145,7 @@ const resetLi = (el) => {
 
 const updateWordleUI = (tries) => {	
 	tries.forEach((word,i) => {
-		let listEls = wordleContainerEl.querySelectorAll(`[data-row-id="${i + 1}"] li`);
+		let listEls = wordleEl.querySelectorAll(`[data-row-id="${i + 1}"] li`);
 		
 		word.forEach((charDetail,i) => {
 			listEls[i].dataset.charIndex = i
@@ -154,11 +160,11 @@ const updateWordleUI = (tries) => {
 	})
 
 	if(!tries.length) {
-		let listEls = wordleContainerEl.querySelectorAll(`[data-row-id] li`);
+		let listEls = wordleEl.querySelectorAll(`[data-row-id] li`);
 		listEls.forEach(resetLi)
 	}
 	for (let i = tries.length; i <= 6; i++) {
-		let listEls = wordleContainerEl.querySelectorAll(`[data-row-id="${i + 1}"] li`);
+		let listEls = wordleEl.querySelectorAll(`[data-row-id="${i + 1}"] li`);
 		listEls.forEach(resetLi)	
 	}
 }
@@ -173,33 +179,18 @@ const getValidTries = tries => {
 const getCharStatsFromTries = validTries => {
 	const filteredWordList = filterWords(validTries)
 	
-	// console.groupCollapsed();
-	// console.log('%c' + filteredWordList.join('  '), 'text-transform: uppercase; line-height: 1.5;')
-	console.log('filteredWordList :>> ', filteredWordList);
-	// console.groupEnd();
 	return getCharStats(filteredWordList)
 }
 
-const handleTriesUpdate = tries => {
-	let validTries = getValidTries(tries)
-	if(!validTries.length) return
-
-	const stats = getCharStatsFromTries(validTries)
-
-	let activeProbabilityInput = probabilityInputEl.querySelector('li.active')
-	updateProbabilityUI(activeProbabilityInput, stats)
-}
-
-const handleKeyDown = (e) => {
-	if(!/^[A-z]{1}$|^Backspace$/.test(e.key)) return
+const handleKeyDown = (key) => {
+	if(key == 'enter')
+		return updateProbabilityUI()
 	
-	let key = e.key.toLowerCase()
 	tries = getTries(tries, key)
 	updateWordleUI(tries)
-	handleTriesUpdate(tries)
 }
 
-wordleContainerEl.querySelectorAll('li').forEach(el => {
+wordleEl.querySelectorAll('li').forEach(el => {
 	el.addEventListener('click', function(){
 		let rowIndex = parseInt(this.parentElement.dataset.rowId) - 1
 		let charIndex = parseInt(this.dataset.charIndex)
@@ -215,17 +206,24 @@ wordleContainerEl.querySelectorAll('li').forEach(el => {
 		this.dataset.color = nextColor
 		
 		updateWordleUI(tries)
-		handleTriesUpdate(tries)
 	}, false)
 })
 
-document.addEventListener('keydown', handleKeyDown, false)
+document.addEventListener('keydown', function(e) {
+	if(e.keyCode == 13) return handleKeyDown('enter')
+	if(!/^[A-z]{1}$|^Backspace$/.test(e.key)) return
+	handleKeyDown(e.key.toLowerCase())
+}, false)
 probabilityInputEls.forEach(inputEl => {
 	inputEl.addEventListener('click', function() {
 		probabilityInputEls.forEach(el => el.classList.remove('active'))
-		let validTries = getValidTries(tries)
-		let stats = null
-		if(validTries) stats = getCharStatsFromTries(tries)
-		updateProbabilityUI(this, stats)
+		this.classList.add('active')
+		updateProbabilityUI()
+	})
+})
+
+wordleKeyboardEl.querySelectorAll('li[data-value]').forEach(el => {
+	el.addEventListener('click', function(){
+		handleKeyDown(this.dataset.value)
 	})
 })

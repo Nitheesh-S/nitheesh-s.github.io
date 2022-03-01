@@ -4,57 +4,102 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-  <script type="module" crossorigin src="/assets/wordle.e95bd8ea.js"></script>
+	<title>Get Wordle Probability</title>
+	<link rel="shortcut icon" href="/favicon.png">
+	
+	<script>
+		window.addEventListener('load', () => {
+			document.body.classList.remove('loading');
+		});
+	</script>
+  <script type="module" crossorigin src="/assets/wordle.1a2768e9.js"></script>
   <link rel="modulepreload" href="/assets/modulepreload-polyfill.b7f2da20.js">
-  <link rel="stylesheet" href="/assets/wordle.ed18280d.css">
+  <link rel="stylesheet" href="/assets/wordle.337da18a.css">
 </head>
-<body>
-	<h2>Wordle Probability Finder</h2>
+<body class="loading">
+	<h2>Get Wordle Probability</h2>
 	<div class="main-container">
 		<div class="wordle-container">
-			<ul class="row row-1" data-row-id="1">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
-			<ul class="row row-2" data-row-id="2">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
-			<ul class="row row-3" data-row-id="3">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
-			<ul class="row row-4" data-row-id="4">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
-			<ul class="row row-5" data-row-id="5">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
-			<ul class="row row-6" data-row-id="6">
-				<li data-char-index="0"></li>
-				<li data-char-index="1"></li>
-				<li data-char-index="2"></li>
-				<li data-char-index="3"></li>
-				<li data-char-index="4"></li>
-			</ul>
+			<div class="wordle">
+				<ul class="row row-1" data-row-id="1">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+				<ul class="row row-2" data-row-id="2">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+				<ul class="row row-3" data-row-id="3">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+				<ul class="row row-4" data-row-id="4">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+				<ul class="row row-5" data-row-id="5">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+				<ul class="row row-6" data-row-id="6">
+					<li data-char-index="0"></li>
+					<li data-char-index="1"></li>
+					<li data-char-index="2"></li>
+					<li data-char-index="3"></li>
+					<li data-char-index="4"></li>
+				</ul>
+			</div>
+			<div class="wordle-keyboard">
+				<ul>
+					<li data-value="q">q</li>
+					<li data-value="w">w</li>
+					<li data-value="e">e</li>
+					<li data-value="r">r</li>
+					<li data-value="t">t</li>
+					<li data-value="y">y</li>
+					<li data-value="u">u</li>
+					<li data-value="i">i</li>
+					<li data-value="o">o</li>
+					<li data-value="p">p</li>
+					<li data-value="backspace">⌫</li>
+				</ul>
+				<ul>
+					<li data-value="a">a</li>
+					<li data-value="s">s</li>
+					<li data-value="d">d</li>
+					<li data-value="f">f</li>
+					<li data-value="g">g</li>
+					<li data-value="h">h</li>
+					<li data-value="j">j</li>
+					<li data-value="k">k</li>
+					<li data-value="l">l</li>
+				</ul>
+				<ul>
+					<li data-value="z">z</li>
+					<li data-value="x">x</li>
+					<li data-value="c">c</li>
+					<li data-value="v">v</li>
+					<li data-value="b">b</li>
+					<li data-value="n">n</li>
+					<li data-value="m">m</li>
+					<li data-value="enter">⏎</li>
+				</ul>
+			</div>
 		</div>
 		<div class="probability-container">
 			<ul class="probability-input">
