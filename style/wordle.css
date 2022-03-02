@@ -256,7 +256,7 @@ h2 {
 			width: 200px;
 			/* background-color: linear-gradient(to right, green 0% var(--percentage), transparent var(--percentage)); */
 			span {
-				display: none;
+				display: block;
 				background-color: #538d4e;
 				height: 100%;
 				width: var(--percentage);
