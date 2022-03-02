@@ -185,8 +185,11 @@ const getCharStatsFromTries = validTries => {
 }
 
 const handleKeyDown = (key) => {
-	if(key == 'enter')
-		return updateProbabilityUI()
+	if(key == 'enter') {
+		updateProbabilityUI()
+		probabilityContainerEl.classList.add('active')
+		return
+	}
 	
 	tries = getTries(tries, key)
 	updateWordleUI(tries)
