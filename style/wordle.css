@@ -1,6 +1,7 @@
 @custom-media --only-ph (max-width: 600px);
 @custom-media --gt-ph (min-width: 600px);
 @custom-media --gt-tab (min-width: 821px);
+@custom-media --gt-min-lap (min-width: 1024px);
 @custom-media --gt-max-w (min-width: 1366px);
   
 @font-face {
@@ -40,21 +41,30 @@ body {
 		min-height: 100vh;
 	}
 }
+header {
+	display: grid;
+	place-items: center;
+	height: 52px;
+	border-bottom: 1px solid #222;
+}
 h2 {
 	font-family: 'FiraCodeVF', monospace;
 	font-variation-settings: 'wght' 400;
 	text-align: center;
 	font-size: 20px;
-	margin: 16px 0;
+	margin: 0;
 	@media (--gt-ph) {
-		font-size: revert;
-		margin: revert;
+		font-size: 20px;
+	}
+	@media (--gt-min-lap) {
+		font-size: 22px;
 	}
 }
 
 .main-container {
 	display: grid;
-	justify-items: center;
+	height: calc(100vh - 52px);
+	place-items: center;
 	grid-gap: 20px;
 	@media (--gt-ph) {
 		grid-template-columns: repeat(2, auto);	
@@ -65,6 +75,8 @@ h2 {
 	display: grid;
 	grid-gap: 10px;
 	justify-items: center;
+	align-content: space-evenly;
+    height: 100%;
 }
 
 .wordle {
@@ -72,6 +84,9 @@ h2 {
 	grid-gap: 5px;
 	--block-size: 54px;
 	@media (--gt-ph) {
+		--block-size: 56px;
+	}
+	@media (--gt-min-lap) {
 		--block-size: 62px;
 	}
 	grid-template-rows: repeat(6, var(--block-size));
@@ -143,11 +158,14 @@ h2 {
 
 .probability-container {
 	display: none;
-	grid-gap: 30px;
+	grid-gap: 15px;
 	width: 100%;
     justify-content: center;
+    align-content: start;
 	@media (--gt-ph) {
 		display: grid;
+		align-content: center;
+		height: 100%;
 	}
 	@media (--only-ph) {
 		&.active {
@@ -216,6 +234,11 @@ h2 {
 	font-size: 14px;
 	font-family: 'FiraCodeVF', monospace;
 	@media (--gt-ph) {
+		grid-auto-flow: column;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(8, 1fr);
+	}
+	@media (--gt-min-lap) {
 		grid-auto-flow: column;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(13, 1fr);

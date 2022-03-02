@@ -140,7 +140,6 @@ const getTries = (tries, key) => {
 }
 
 const resetLi = (el) => {
-	el.dataset.charIndex = null
 	el.dataset.color = ''
 	el.textContent = ''
 }
@@ -150,7 +149,6 @@ const updateWordleUI = (tries) => {
 		let listEls = wordleEl.querySelectorAll(`[data-row-id="${i + 1}"] li`);
 		
 		word.forEach((charDetail,i) => {
-			listEls[i].dataset.charIndex = i
 			listEls[i].dataset.color = charDetail.color
 			listEls[i].textContent = charDetail.char
 		})
