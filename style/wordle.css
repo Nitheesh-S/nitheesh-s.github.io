@@ -34,7 +34,7 @@ body {
 	align-content: flex-start;
 	font-family: 'JosefinSansVF', sans-serif;
 	min-height: 85vh;
-	/* overflow: hidden; */
+	background-color: #121213;
 	@media (--gt-ph) {
 		min-height: 100vh;
 	}
@@ -63,12 +63,10 @@ h2 {
 .wordle {
 	display: grid;
 	grid-gap: 5px;
-	width: 350px;
-	height: 420px;
-	grid-template-rows: repeat(6, 1fr);
+	grid-template-rows: repeat(6, 62px);
 	ul {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(5, 62px);
 		grid-gap: 5px;
 		padding: 0;
 		margin: 0;
@@ -78,8 +76,7 @@ h2 {
 	}
 	li {
 		display: grid;
-		padding: 10px;
-		border: 1px solid #444;
+		border: 2px solid #3a3a3c;
 		place-items: center;
 		text-transform: uppercase;
 		cursor: pointer;
@@ -113,16 +110,19 @@ h2 {
 		}
 	}
 	li {
-		border: 1px solid #444;
 		display: grid;
 		place-items: center;
-		width: 32px;
-		height: 46px;
+		width: 33px;
+		height: 66px;
 		cursor: pointer;
 		user-select: none;
+		border: 1px solid #444;
+		.in-active {
+			background: darkslategrey;
+		}
 		@media (--gt-ph) {
 			width: 42px;
-			height: 42px;
+			height: 66px;
 		}
 		&:hover, &:focus {
 			background: #111;
@@ -137,6 +137,31 @@ h2 {
     justify-content: center;
 	@media (--gt-ph) {
 		display: grid;
+	}
+	@media (--only-ph) {
+		&.active {
+			display: grid;
+			.close {
+				display: grid;
+			}
+		}
+		grid-gap: 30px;
+		width: 100%;
+		justify-content: center;
+		position: fixed;
+		background: #111;
+		top: 0;
+		max-height: 100vh;
+		overflow: scroll;
+		padding: 30px;
+	}
+	.close {
+		position: fixed;
+		top: 12px;
+		right: 12px;
+		width: 32px;
+		cursor: pointer;
+		display: none;
 	}
 }
 .probability-input {

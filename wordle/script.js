@@ -12,7 +12,9 @@ colorsOrder.next = function(value) {
 const wordleContainerEl = document.querySelector('.wordle-container')
 const wordleEl = wordleContainerEl.querySelector('.wordle')
 const wordleKeyboardEl = wordleContainerEl.querySelector('.wordle-keyboard')
-const probabilityOutputEl = document.querySelector('.probability-output')
+const probabilityContainerEl = document.querySelector('.probability-container')
+const closeProbabilityEl = probabilityContainerEl.querySelector('.close')
+const probabilityOutputEl = probabilityContainerEl.querySelector('.probability-output')
 const probabilityInputEl = document.querySelector('.probability-input');
 const probabilityInputEls = probabilityInputEl.querySelectorAll('li');
 let tries = []
@@ -226,4 +228,13 @@ wordleKeyboardEl.querySelectorAll('li[data-value]').forEach(el => {
 	el.addEventListener('click', function(){
 		handleKeyDown(this.dataset.value)
 	})
+})
+
+document.querySelector('h2').addEventListener('click', function() {
+	handleKeyDown('enter')
+	probabilityContainerEl.classList.add('active')
+}, false)
+
+closeProbabilityEl.addEventListener('click', function() {
+	probabilityContainerEl.classList.remove('active')
 })
