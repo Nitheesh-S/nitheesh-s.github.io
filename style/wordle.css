@@ -35,6 +35,8 @@ body {
 	font-family: 'JosefinSansVF', sans-serif;
 	min-height: 85vh;
 	background-color: #121213;
+	max-height: 100vh;
+    overflow: hidden;
 	@media (--gt-ph) {
 		min-height: 100vh;
 	}
