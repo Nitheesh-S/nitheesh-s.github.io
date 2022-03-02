@@ -3,6 +3,7 @@
 @custom-media --gt-tab (min-width: 821px);
 @custom-media --gt-min-lap (min-width: 1024px);
 @custom-media --gt-max-w (min-width: 1366px);
+@custom-media --small-lap (min-width: 924px) and (max-height: 650px);
   
 @font-face {
 	font-family: 'JosefinSansVF';
@@ -89,6 +90,9 @@ h2 {
 	@media (--gt-min-lap) {
 		--block-size: 62px;
 	}
+	@media (--small-lap) {
+		--block-size: 54px;
+	}
 	grid-template-rows: repeat(6, var(--block-size));
 	ul {
 		display: grid;
@@ -124,7 +128,6 @@ h2 {
 	font-family: 'FiraCodeVF', monospace;
 	ul {
 		display: grid;
-		
 		padding: 0;
 		margin: 0;
 		list-style: none;
@@ -149,6 +152,10 @@ h2 {
 		@media (--gt-ph) {
 			width: 42px;
 			height: 66px;
+		}
+		@media (--small-lap) {
+			width: 32px;
+			height: 56px;
 		}
 		&:hover, &:focus {
 			background: #111;
@@ -234,11 +241,6 @@ h2 {
 	font-size: 14px;
 	font-family: 'FiraCodeVF', monospace;
 	@media (--gt-ph) {
-		grid-auto-flow: column;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(8, 1fr);
-	}
-	@media (--gt-min-lap) {
 		grid-auto-flow: column;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(13, 1fr);
