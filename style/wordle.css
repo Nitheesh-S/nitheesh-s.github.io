@@ -92,13 +92,13 @@ h2 {
 		text-transform: uppercase;
 		cursor: pointer;
 		&[data-color="GREY"] {
-			background-color: darkslategrey;
+			background-color: #3a3a3c;
 		}
 		&[data-color="YELLOW"] {
-			background-color: yellowgreen;
+			background-color: #b59f3b;
 		}
 		&[data-color="GREEN"] {
-			background-color: green;
+			background-color: #538d4e;
 		}
 	}
 }
@@ -228,6 +228,7 @@ h2 {
 		justify-content: start;
 		grid-gap: 8px;
 		grid-template-columns: 28px 1fr;
+		--percentage: 0%;
 	}
 	.char {
 		display: grid;	
@@ -241,7 +242,8 @@ h2 {
 		display: grid;
 		grid-auto-flow: column;
 		grid-gap: 4px;
-
+		align-items: center;
+		
 		> span {
 			display: block;
 			width: 45px;
@@ -250,13 +252,17 @@ h2 {
 		.visual {
 			position: relative;
 			border: 1px solid #444;
-			height: 100%;
+			height: 20px;
 			width: 200px;
+			/* background-color: linear-gradient(to right, green 0% var(--percentage), transparent var(--percentage)); */
 			span {
-				display: block;
+				display: none;
 				background-color: #538d4e;
 				height: 100%;
+				width: var(--percentage);
+				transition: all 0.2s ease-in;
 			}
+			transition: all 0.2s ease-in;
 		}
 	}
 }

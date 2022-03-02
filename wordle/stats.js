@@ -48,20 +48,16 @@ const getProbabilityStats = (position=null, stats=getCharStats(dictionary)) => {
 	return statsUIData
 }
 
-const getStatsUI = (statsUIData) => {
-	let listStr = statsUIData.map(data => {
-		return `<li>
-			<span class="char">${data.char.toUpperCase()}</span>
-			<div class="probability" data-value="${data.value}" data-percent="${data.percent}">
-				<span>${data.percent}</span>
-				<div class="visual">
-					<span style="width:${data.percent}%"></span>
-				</div>
-			</div>
-		</li>`
-	}).join('')
-	
-	return listStr
+const updateStatsUI = (statsUIData, outputEls) => {
+	statsUIData.forEach((data, i) => {
+		outputEls[i].querySelector('.char').textContent = data.char.toUpperCase()
+
+		let probabilityEl = outputEls[i].querySelector('.probability')
+		probabilityEl.dataset.value = data.value
+		outputEls[i].style = `--percentage:${data.percent}%;`
+
+		outputEls[i].querySelector('.probability > span').textContent = data.percent
+	})
 }
 
-export { getStatsUI, getCharStats, getProbabilityStats };
+export { updateStatsUI, getCharStats, getProbabilityStats };

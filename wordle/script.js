@@ -1,6 +1,6 @@
 import '/style/wordle.css'
 import dictionary from '/wordle/five_letter_words.js'
-import { getStatsUI, getCharStats, getProbabilityStats } from '/wordle/stats.js'
+import { updateStatsUI, getCharStats, getProbabilityStats } from '/wordle/stats.js'
 
 const colorsOrder = ['GREY', 'YELLOW', 'GREEN']
 
@@ -14,7 +14,7 @@ const wordleEl = wordleContainerEl.querySelector('.wordle')
 const wordleKeyboardEl = wordleContainerEl.querySelector('.wordle-keyboard')
 const probabilityContainerEl = document.querySelector('.probability-container')
 const closeProbabilityEl = probabilityContainerEl.querySelector('.close')
-const probabilityOutputEl = probabilityContainerEl.querySelector('.probability-output')
+const probabilityOutputEls = probabilityContainerEl.querySelectorAll('.probability-output li')
 const probabilityInputEl = document.querySelector('.probability-input');
 const probabilityInputEls = probabilityInputEl.querySelectorAll('li');
 let tries = []
@@ -29,7 +29,7 @@ const updateProbabilityUI = () => {
 	let activeProbabilityInput = probabilityInputEl.querySelector('li.active')
 	let position = getProbabilityPosition(activeProbabilityInput)
 	let statsUIData = getProbabilityStats(position, stats)
-	probabilityOutputEl.innerHTML = getStatsUI(statsUIData)
+	updateStatsUI(statsUIData, probabilityOutputEls)
 }
 
 const getGreenRegExp = tries => {
@@ -106,7 +106,7 @@ const filterWords = (tries) => {
 
 const getTries = (tries, key) => {
 	if(key == 'backspace') {
-		if(!tries.length) return
+		if(!tries.length) return tries
 
 		if(tries[tries.length - 1].length == 1) {
 			tries.pop()
@@ -200,7 +200,8 @@ wordleEl.querySelectorAll('li').forEach(el => {
 		let rowIndex = parseInt(this.parentElement.dataset.rowId) - 1
 		let charIndex = parseInt(this.dataset.charIndex)
 		
-		let currentColor = tries[rowIndex][charIndex].color
+		let currentColor = tries[rowIndex]?.[charIndex]?.color
+		if(!currentColor) return
 		let nextColor = colorsOrder.next(currentColor)
 
 		tries.forEach(attempt => {
