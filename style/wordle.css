@@ -35,7 +35,6 @@ body {
 	font-family: 'JosefinSansVF', sans-serif;
 	min-height: 85vh;
 	background-color: #121213;
-	max-height: 100vh;
     overflow: hidden;
 	@media (--gt-ph) {
 		min-height: 100vh;
@@ -71,10 +70,14 @@ h2 {
 .wordle {
 	display: grid;
 	grid-gap: 5px;
-	grid-template-rows: repeat(6, 62px);
+	--block-size: 54px;
+	@media (--gt-ph) {
+		--block-size: 62px;
+	}
+	grid-template-rows: repeat(6, var(--block-size));
 	ul {
 		display: grid;
-		grid-template-columns: repeat(5, 62px);
+		grid-template-columns: repeat(5, var(--block-size));
 		grid-gap: 5px;
 		padding: 0;
 		margin: 0;
