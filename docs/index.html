@@ -8,16 +8,48 @@
 		/>
 		<title>Portfolio | Nitheesh</title>
 		<link rel="shortcut icon" href="/favicon.png">
-		
+		<style>
+			body.loading {
+				margin: 0;
+				position: relative;
+				min-height: 100vh;
+				background: #000;
+				overflow: hidden;
+			}
+			.loader {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background: #000;
+				z-index: 1001;
+				display: grid;
+				color: #fff;
+				font-family: sans-serif;
+				justify-content: center;
+				align-items: center;
+				pointer-events: none;
+				opacity: 0;
+				transition: opacity 0.5s linear;
+			}
+			body.loading .loader {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			body.loading .main-contianer {
+				opacity: 0;
+			}
+		</style>
 		<script>
 			window.addEventListener('load', () => {
 				document.body.classList.remove('loading');
 			});
 		</script>
 		<link rel="preload" href="/fonts/FiraCode-VariableFont_wght.ttf" as="font" crossorigin="anonymous" />
-		<script type="module" crossorigin src="/assets/main.8c6fa055.js"></script>
+		<script type="module" crossorigin src="/assets/main.9bf08189.js"></script>
 		<link rel="modulepreload" href="/assets/modulepreload-polyfill.b7f2da20.js">
-		<link rel="stylesheet" href="/assets/main.d6697101.css">
+		<link rel="stylesheet" href="/assets/main.d2d8d992.css">
 	</head>
 	<body class="loading">
 		<div class="loader"></div>
