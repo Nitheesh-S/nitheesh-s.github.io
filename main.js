@@ -11,7 +11,7 @@ const remainingDays = Math.floor(experienceInDays % year)
 
 let experience = `${Math.floor(experienceInDays / year)} years`
 
-if(remainingDays) experience += `and ${remainingDays} days`
+if(remainingDays) experience += ` and ${remainingDays} days`
 
 
 class Typer {
