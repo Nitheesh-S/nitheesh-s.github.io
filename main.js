@@ -1,6 +1,18 @@
 import '/style/index.css'
 
-let mainTitle = document.querySelector('h1');
+
+const mainTitle = document.querySelector('h1');
+const workJoinDate = new Date('Jan 01 2018')
+
+const experienceInDays = (new Date() - workJoinDate) / (1000 * 60 * 60 * 24)
+const year = 365.2425;
+
+const remainingDays = Math.floor(experienceInDays % year)
+
+let experience = `${Math.floor(experienceInDays / year)} years`
+
+if(remainingDays) experience += `and ${remainingDays} days`
+
 
 class Typer {
 	constructor(el, content) {
@@ -26,7 +38,7 @@ class Typer {
 
 		this.updatedContent += this.content[0][0] ? this.content[0][0] : this.content[1] ? '</br>' : '';
 
-		this.el.innerHTML = this.initialHTML + this.updatedContent + `<span class="block">&#8192;</span>`;
+		this.el.innerHTML = `${this.initialHTML} ${this.updatedContent} <span class="block">&#8192;</span>`;
 
 		if (this.content[0][0]) this.content[0] = this.content[0].slice(1);
 		else this.content = this.content.slice(1);
@@ -41,10 +53,11 @@ class Typer {
 
 window.addEventListener('load', () => {
 	setTimeout(() => {
-		let mainTitleTyper = new Typer(mainTitle, [
-			`Hi, I am Nitheesh.`,
-			`I'm a Software Engineer based in Chennai.`,
-			`Currently, working at Techjays.`,
+		new Typer(mainTitle, [
+			'Hi, I am Nitheesh.',
+			'I\'m a Software Engineer based in Chennai.',
+			'Currently, working at Techjays.',
+			`I have ${experience} of experience.`
 		]);
 	}, 1000);
 });
