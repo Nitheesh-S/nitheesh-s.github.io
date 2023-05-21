@@ -13,6 +13,9 @@
     "postcss-mixins": "^9.0.2",
     "postcss-nested": "^5.0.6",
     "postcss-simple-vars": "^6.0.3",
-    "vite": "^2.9.13"
+    "vite": "^4.2.1"
+  },
+  "volta": {
+    "node": "19.8.1"
   }
 }
