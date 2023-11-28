@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
 		new Typer(mainTitle, [
 			'Hi, I am Nitheesh.',
 			'I\'m a Software Engineer based in Chennai.',
-			'Currently, working at Techjays.',
+			'Currently, working at Comcast.',
 			`I have ${experience} of experience.`
 		]);
 	}, 1000);
